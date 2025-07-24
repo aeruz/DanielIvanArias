@@ -192,14 +192,6 @@
             box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
         }
 
-        .cta-button:disabled {
-            background-color: var(--border-color);
-            color: var(--subtle-text-color);
-            cursor: wait;
-            transform: none;
-            box-shadow: none;
-        }
-
         /* --- Sections --- */
         .section {
             padding: 6rem 0;
@@ -441,16 +433,10 @@
             <div class="video-overlay"></div>
             
             <div class="hero-content reveal">
-                <div id="entry-content">
-                    <h1>3D Animator &amp; Motion Designer</h1>
-                    <p>Bringing characters and worlds to life through animation.</p>
-                    <button id="enter-button" class="cta-button" disabled>Loading...</button>
-                </div>
-                <div id="main-hero-content" style="display: none;">
-                    <h1>Daniel Ivan Arias</h1>
-                    <p>Welcome to my portfolio.</p>
-                    <a href="#projects" class="cta-button">View My Work</a>
-                </div>
+                <!-- Main hero content is now directly visible -->
+                <h1>Daniel Ivan Arias</h1>
+                <p>Welcome to my portfolio.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
             </div>
         </section>
 
@@ -535,10 +521,8 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // --- YouTube Video Background Script ---
-        // This section is now outside DOMContentLoaded to ensure it's globally available
         var player;
         function onYouTubeIframeAPIReady() {
-            // EDIT HERE: Replace with your YouTube video ID
             const videoId = 'Kxz1hPyG-ik'; 
 
             player = new YT.Player('video-background', {
@@ -564,13 +548,8 @@
 
         function onPlayerReady(event) {
             event.target.mute();
-            event.target.pauseVideo();
-            // Enable the button only when the player is ready.
-            const enterButton = document.getElementById('enter-button');
-            if (enterButton) {
-                enterButton.disabled = false;
-                enterButton.textContent = 'Enter';
-            }
+            // Autoplay the video once it's ready
+            event.target.playVideo();
         }
     
         // --- Main site functionality ---
@@ -657,19 +636,6 @@
             modalClose.addEventListener('click', closeModal);
             modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-
-            // --- Enter Button Logic ---
-            const enterButton = document.getElementById('enter-button');
-            const entryContent = document.getElementById('entry-content');
-            const mainContent = document.getElementById('main-hero-content');
-            
-            enterButton.addEventListener('click', () => {
-                if (player && typeof player.playVideo === 'function') {
-                    player.playVideo();
-                }
-                entryContent.style.display = 'none';
-                mainContent.style.display = 'block';
-            });
         });
     </script>
 </body>
