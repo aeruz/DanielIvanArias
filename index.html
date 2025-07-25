@@ -189,7 +189,6 @@
             text-decoration: none;
             font-weight: 700;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default; /* Not a real button anymore */
             margin-bottom: 1.5rem; /* Space between button and thumbnail */
         }
         
@@ -199,7 +198,6 @@
             background-size: cover;
             background-position: center;
             border-radius: 8px;
-            border: 2px solid var(--border-color);
             cursor: pointer;
             position: relative;
             margin: 0 auto;
@@ -447,36 +445,9 @@
             transition: width 0.4s ease, height 0.4s ease, max-width 0.4s ease, border-radius 0.4s ease;
         }
         
-        #video-player-modal.fullscreen .modal-content {
-            width: 100vw;
-            height: 100vh;
-            max-width: 100vw;
-            border-radius: 0;
-        }
-
         #video-player-container {
             width: 100%;
             height: 100%;
-        }
-
-        .video-modal-controls {
-            position: absolute;
-            top: 1rem;
-            right: 4.5rem; /* Moved to the left of the close button */
-            z-index: 10;
-        }
-
-        .fullscreen-btn {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-        }
-        
-        .fullscreen-btn svg {
-            width: 24px;
-            height: 24px;
         }
         
         /* --- Responsive Design --- */
@@ -513,7 +484,7 @@
             <div class="hero-content reveal">
                 <h1>Daniel Ivan Arias</h1>
                 <p>3D Animator.</p>
-                <div class="cta-button">View My Work</div>
+                <a href="#projects" class="cta-button">View My Work</a>
                 <div id="hero-video-thumbnail"></div>
             </div>
         </section>
@@ -532,36 +503,39 @@
                 <h2 class="section-title reveal">My Projects</h2>
                 <div class="project-grid">
 
+                    <!-- EDIT HERE: Replace with your project logo -->
                     <div class="project-card reveal" 
                          data-title="2025 DEMOREEL"
-                         data-image="https://placehold.co/800x600/0d1117/58a6ff?text=Character+Animation"
+                         data-image="https://placehold.co/800x600/0d1117/58a6ff?text=Project+One+Large"
                          data-details="A showcase of a bipedal character walk cycle and expressive performance. Responsible for rigging, skinning, and animating the character in Maya. The focus was on conveying personality and weight through movement. Rendered in Arnold.">
                         <div class="project-image-wrapper">
-                           <img src="https://placehold.co/600x400/0d1117/58a6ff?text=2025 DEMOREEL" alt="Character Animation Screenshot">
+                           <img src="demoreel-logo.png" alt="2025 Demoreel Logo">
                         </div>
                         <div class="project-info">
                             <h3>2025 DEMOREEL</h3>
                         </div>
                     </div>
 
+                    <!-- EDIT HERE: Replace with your project logo -->
                     <div class="project-card reveal"
                          data-title="Creature Animation Reel"
-                         data-image="https://placehold.co/800x600/58a6ff/0d1117?text=Creature+Reel"
+                         data-image="https://placehold.co/800x600/58a6ff/0d1117?text=Project+Two+Large"
                          data-details="A collection of quadruped and fantasy creature animations. This project involved studying animal locomotion to create believable and dynamic creature movements. Modeled in ZBrush, animated in Blender, and composited in After Effects.">
                         <div class="project-image-wrapper">
-                            <img src="https://placehold.co/600x400/58a6ff/0d1117?text=Creature+Reel" alt="Creature Reel Screenshot">
+                            <img src="creature-reel-logo.png" alt="Creature Reel Logo">
                         </div>
                         <div class="project-info">
                             <h3>Creature Animation Reel</h3>
                         </div>
                     </div>
                     
+                    <!-- EDIT HERE: Replace with your project logo -->
                     <div class="project-card reveal"
                          data-title="Product Visualization"
-                         data-image="https://placehold.co/800x600/c9d1d9/0d1117?text=Product+Viz"
+                         data-image="https://placehold.co/800x600/c9d1d9/0d1117?text=Project+Three+Large"
                          data-details="A sleek, dynamic animation for a high-tech product. Focused on clean motion graphics, precise camera movements, and photorealistic rendering to highlight the product's design and features.">
                         <div class="project-image-wrapper">
-                            <img src="https://placehold.co/600x400/c9d1d9/0d1117?text=Product+Viz" alt="Product Visualization Screenshot">
+                            <img src="product-viz-logo.png" alt="Product Visualization Logo">
                         </div>
                         <div class="project-info">
                             <h3>Product Visualization</h3>
@@ -596,21 +570,16 @@
     
     <div id="video-player-modal" class="modal-overlay">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="video-modal-controls">
-                <button class="fullscreen-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
-                </button>
-            </div>
             <div id="video-player-container"></div>
         </div>
+        <span class="modal-close">&times;</span>
     </div>
 
     <!-- YouTube IFrame API script -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         var backgroundPlayer, reelPlayer;
-        const reelVideoId = '42zWE0kcI8o';
+        const reelVideoId = 'fk9uSVDmF04';
 
         function onYouTubeIframeAPIReady() {
             const backgroundVideoId = '42zWE0kcI8o'; 
@@ -708,7 +677,6 @@
             const heroThumbnail = document.getElementById('hero-video-thumbnail');
             const videoPlayerModal = document.getElementById('video-player-modal');
             const videoPlayerModalClose = videoPlayerModal.querySelector('.modal-close');
-            const fullscreenBtn = videoPlayerModal.querySelector('.fullscreen-btn');
 
             heroThumbnail.style.backgroundImage = `url(https://img.youtube.com/vi/${reelVideoId}/maxresdefault.jpg)`;
 
@@ -720,7 +688,11 @@
                 } else {
                     reelPlayer = new YT.Player('video-player-container', {
                         videoId: reelVideoId,
-                        playerVars: { 'autoplay': 1, 'controls': 1 },
+                        playerVars: { 
+                            'autoplay': 1, 
+                            'controls': 1,
+                            'suggestedQuality': 'hd1080'
+                        },
                         events: { 'onReady': (event) => event.target.playVideo() }
                     });
                 }
@@ -732,15 +704,11 @@
                 if (reelPlayer && typeof reelPlayer.stopVideo === 'function') {
                     reelPlayer.stopVideo();
                 }
-                if (videoPlayerModal.classList.contains('fullscreen')) {
-                    videoPlayerModal.classList.remove('fullscreen');
-                }
             };
             
             heroThumbnail.addEventListener('click', openVideoPlayerModal);
             videoPlayerModalClose.addEventListener('click', closeVideoPlayerModal);
             videoPlayerModal.addEventListener('click', e => { if (e.target === videoPlayerModal) closeVideoPlayerModal(); });
-            fullscreenBtn.addEventListener('click', () => videoPlayerModal.classList.toggle('fullscreen'));
 
             // Close modals with Escape key
             document.addEventListener('keydown', e => {
