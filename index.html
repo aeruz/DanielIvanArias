@@ -168,14 +168,15 @@
         }
 
         #hero h1 {
-            font-size: 4rem;
+            font-size: 3.6rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: #ffffff; /* CHANGED */
         }
 
         #hero p {
-            font-size: 1.5rem;
-            color: var(--subtle-text-color);
+            font-size: 1.95rem;
+            color: var(--text-color); /* CHANGED */
             margin-bottom: 2rem;
         }
         
@@ -183,13 +184,19 @@
             display: inline-block;
             background-color: var(--primary-color);
             color: var(--bg-color);
-            padding: 0.6rem 1.8rem; /* Smaller button */
-            font-size: 0.9rem; /* Smaller font */
+            padding: 0.6rem 1.8rem;
+            font-size: 0.9rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 1.5rem; /* Space between button and thumbnail */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
+            background-color: #7bbaff; /* ADDED */
         }
         
         #hero-video-thumbnail {
@@ -223,6 +230,15 @@
         #hero-video-thumbnail:hover::after {
             transform: scale(1.2);
         }
+        
+        .demoreel-text {
+            margin-top: 1rem;
+            color: var(--text-color); /* CHANGED */
+            font-size: 0.6rem; /* CHANGED */
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
 
         /* --- Sections --- */
         .section {
@@ -242,8 +258,9 @@
         }
 
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             position: relative;
         }
@@ -254,6 +271,7 @@
             transition: transform 0.4s ease;
             cursor: pointer;
             position: relative;
+            width: 320px;
         }
         
         .project-image-wrapper {
@@ -277,6 +295,19 @@
 
         .project-info {
             display: none;
+        }
+
+        .project-grid-small {
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .project-grid-small .project-card {
+            width: 200px;
+        }
+
+        .project-grid-small .project-image-wrapper {
+            height: 150px;
         }
         
         /* --- Animation --- */
@@ -361,6 +392,7 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+            min-height: 60px;
         }
         
         #modal-project-details {
@@ -413,7 +445,6 @@
             opacity: 1;
         }
 
-        /* NEW: Playblast Video Player */
         #playblast-video-container {
             margin-top: 1.5rem;
         }
@@ -477,6 +508,7 @@
                 <p>3D Animator.</p>
                 <a href="#projects" class="cta-button">View My Work</a>
                 <div id="hero-video-thumbnail"></div>
+                <p class="demoreel-text">DEMOREEL 2025</p>
             </div>
         </section>
 
@@ -496,34 +528,55 @@
 
                     <div class="project-card reveal" 
                          data-title="LEGO Animation Reel"
+                         data-title-type="image"
+                         data-title-src="lego-collab.png"
                          data-video="LEGO.mp4"
                          data-playblasts="P-1,5"
                          data-details="A collection of LEGO animations I created in Autodesk Maya, featuring characters from Batman, Spider-Man, Marvel, and Star Wars. Focused purely on animation, these clips showcase my skills in timing, movement, and character performance.">
                         <div class="project-image-wrapper">
-                           <img src="lego-logo.png" alt="LEGO Reel Logo">
+                           <img src="lego-logo.png" alt="LEGO Collaboration Logos">
                         </div>
                     </div>
 
                     <div class="project-card reveal"
-                         data-title="Creature Animation Reel"
-                         data-video="creature-reel.mp4"
-                         data-playblasts="P-2,2"
-                         data-details="A collection of quadruped and fantasy creature animations. This project involved studying animal locomotion to create believable and dynamic creature movements. Modeled in ZBrush, animated in Blender, and composited in After Effects.">
+                         data-title="MARVEL Animation Reel"
+                         data-title-type="image"
+                         data-title-src="marvel-collab.png"
+                         data-video="MARVEL.mp4"
+                         data-playblasts="P-2,6"
+                         data-details="These are my 3D animations created for Marvel, based on Contest of Champions—a popular mobile fighting game featuring iconic Marvel characters. I contributed to the character animation in these cinematic-style trailers.">
                         <div class="project-image-wrapper">
-                            <img src="creature-reel-logo.png" alt="Creature Reel Logo">
+                           <img src="marvel-logo.png" alt="MARVEL Collaboration Logos">
                         </div>
                     </div>
-                    
-                    <div class="project-card reveal"
-                         data-title="Product Visualization"
-                         data-video="product-viz.mp4"
-                         data-playblasts="P-3,3"
-                         data-details="A sleek, dynamic animation for a high-tech product. Focused on clean motion graphics, precise camera movements, and photorealistic rendering to highlight the product's design and features.">
-                        <div class="project-image-wrapper">
-                            <img src="product-viz-logo.png" alt="Product Visualization Logo">
-                        </div>
-                    </div>
+                </div>
 
+                <div class="project-grid project-grid-small">
+                    <div class="project-card reveal" data-title="Project 3" data-video="video3.mp4" data-details="Details for project 3.">
+                        <div class="project-image-wrapper">
+                           <img src="logo3.png" alt="Project 3 Logo">
+                        </div>
+                    </div>
+                    <div class="project-card reveal" data-title="Project 4" data-video="video4.mp4" data-details="Details for project 4.">
+                        <div class="project-image-wrapper">
+                           <img src="logo4.png" alt="Project 4 Logo">
+                        </div>
+                    </div>
+                    <div class="project-card reveal" data-title="Project 5" data-video="video5.mp4" data-details="Details for project 5.">
+                        <div class="project-image-wrapper">
+                           <img src="logo5.png" alt="Project 5 Logo">
+                        </div>
+                    </div>
+                    <div class="project-card reveal" data-title="Project 6" data-video="video6.mp4" data-details="Details for project 6.">
+                        <div class="project-image-wrapper">
+                           <img src="logo6.png" alt="Project 6 Logo">
+                        </div>
+                    </div>
+                    <div class="project-card reveal" data-title="Project 7" data-video="video7.mp4" data-details="Details for project 7.">
+                        <div class="project-image-wrapper">
+                           <img src="logo7.png" alt="Project 7 Logo">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -544,12 +597,11 @@
         <div class="modal-content">
             <span class="modal-close">&times;</span>
             <video id="modal-project-video" controls autoplay muted loop playsinline></video>
-            <h3 id="modal-project-title"></h3>
+            <div id="modal-project-title"></div>
             <p id="modal-project-details"></p>
             <div id="modal-playblast-section">
                 <h4>Playblasts &amp; Process</h4>
                 <div id="modal-playblast-grid"></div>
-                <!-- NEW: Container for the playblast video player -->
                 <div id="playblast-video-container" style="display: none;">
                     <video id="modal-playblast-video" controls playsinline></video>
                 </div>
@@ -601,13 +653,15 @@
             });
 
             // --- Spotlight Effect on Project Grid ---
-            const projectGrid = document.querySelector('.project-grid');
-            projectGrid.addEventListener('mousemove', e => {
-                const rect = projectGrid.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                projectGrid.style.setProperty('--x', `${x}px`);
-                projectGrid.style.setProperty('--y', `${y}px`);
+            const projectGrids = document.querySelectorAll('.project-grid');
+            projectGrids.forEach(grid => {
+                grid.addEventListener('mousemove', e => {
+                    const rect = grid.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    grid.style.setProperty('--x', `${x}px`);
+                    grid.style.setProperty('--y', `${y}px`);
+                });
             });
 
             // --- Reveal on Scroll Animation ---
@@ -639,16 +693,23 @@
 
             const openProjectModal = (card) => {
                 const title = card.dataset.title;
+                const titleType = card.dataset.titleType;
+                const titleSrc = card.dataset.titleSrc;
                 const videoSrc = card.dataset.video;
                 const details = card.dataset.details;
                 const playblasts = card.dataset.playblasts;
                 
-                modalTitle.textContent = title;
+                if (titleType === 'image' && titleSrc) {
+                    modalTitle.innerHTML = `<img src="${titleSrc}" alt="${title}" style="max-height: 60px; width: auto; margin-bottom: 1rem;">`;
+                } else {
+                    modalTitle.innerHTML = `<h3 style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;">${title}</h3>`;
+                }
+
                 modalVideo.src = videoSrc;
                 modalDetails.textContent = details;
 
                 playblastGrid.innerHTML = ''; 
-                playblastVideoContainer.style.display = 'none'; // Hide on open
+                playblastVideoContainer.style.display = 'none';
 
                 if (playblasts) {
                     playblastSection.style.display = 'block';
