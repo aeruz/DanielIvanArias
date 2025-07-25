@@ -131,11 +131,11 @@
         
         #video-background-container {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* This is key */
             z-index: -2;
             pointer-events: none;
         }
@@ -144,11 +144,11 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 56.25vw; /* 16:9 aspect ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 aspect ratio */
             border: none;
         }
         
@@ -171,12 +171,12 @@
             font-size: 3.6rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #ffffff; /* CHANGED */
+            color: #ffffff;
         }
 
         #hero p {
             font-size: 1.95rem;
-            color: var(--text-color); /* CHANGED */
+            color: var(--text-color);
             margin-bottom: 2rem;
         }
         
@@ -196,7 +196,7 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(88, 166, 255, 0.2);
-            background-color: #7bbaff; /* ADDED */
+            background-color: #7bbaff;
         }
         
         #hero-video-thumbnail {
@@ -233,8 +233,8 @@
         
         .demoreel-text {
             margin-top: 1rem;
-            color: var(--text-color); /* CHANGED */
-            font-size: 0.6rem; /* CHANGED */
+            color: var(--text-color);
+            font-size: 0.6rem;
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
