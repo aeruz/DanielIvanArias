@@ -134,16 +134,22 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             transform: translate(-50%, -50%);
             z-index: -2;
             pointer-events: none;
         }
         
         #video-background {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
             border: none;
         }
         
@@ -433,9 +439,8 @@
             <div class="video-overlay"></div>
             
             <div class="hero-content reveal">
-                <!-- Main hero content is now directly visible -->
                 <h1>Daniel Ivan Arias</h1>
-                <p>Welcome to my portfolio.</p>
+                <p>3D Animator.</p>
                 <a href="#projects" class="cta-button">View My Work</a>
             </div>
         </section>
@@ -455,14 +460,14 @@
                 <div class="project-grid">
 
                     <div class="project-card reveal" 
-                         data-title="Character Animation"
+                         data-title="2025 DEMOREEL"
                          data-image="https://placehold.co/800x600/0d1117/58a6ff?text=Character+Animation"
                          data-details="A showcase of a bipedal character walk cycle and expressive performance. Responsible for rigging, skinning, and animating the character in Maya. The focus was on conveying personality and weight through movement. Rendered in Arnold.">
                         <div class="project-image-wrapper">
-                           <img src="https://placehold.co/600x400/0d1117/58a6ff?text=Character+Animation" alt="Character Animation Screenshot">
+                           <img src="https://placehold.co/600x400/0d1117/58a6ff?text=2025 DEMOREEL" alt="Character Animation Screenshot">
                         </div>
                         <div class="project-info">
-                            <h3>Character Animation</h3>
+                            <h3>2025 DEMOREEL</h3>
                         </div>
                     </div>
 
@@ -523,7 +528,8 @@
         // --- YouTube Video Background Script ---
         var player;
         function onYouTubeIframeAPIReady() {
-            const videoId = 'Kxz1hPyG-ik'; 
+            // EDIT HERE: Replace with your YouTube video ID
+            const videoId = '42zWE0kcI8o'; 
 
             player = new YT.Player('video-background', {
                 videoId: videoId,
@@ -548,7 +554,6 @@
 
         function onPlayerReady(event) {
             event.target.mute();
-            // Autoplay the video once it's ready
             event.target.playVideo();
         }
     
